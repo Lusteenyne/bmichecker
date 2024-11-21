@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap-5.3.3-dist/js/bootstrap.bundle.js">
+    
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="w-50 mx-auto shadow rounded p-3 bg-primary h-50 ">
+        <h1>Calculate body mass index</h1>
+        <input type="text" class="form-control w-25 ms-4" id="height" placeholder="Enter height">
+        <input type="text" class="form-control w-25 ms-4" id="weight" placeholder="Enter weight">
+        <button class="btn btn-danger m-auto mt-5" onclick="findBmi()()">Calculate</button>
+        <p id="reply"></p>
+        <div id="replyTwo"></div>
+    </main>
+    
+</body>
+
+</html>
+
+<script>
+    let myValue1 = document.getElementById("height")
+    let myValue2 = document.getElementById("weight")
+    let output = document.getElementById("reply")
+    let outputTwo = document.getElementById("replyTwo")
+
+
+    function findBmi() {
+
+        if (myValue1.value.trim() === '' || myValue2.value.trim() === '') {
+            output.innerHTML = `<h3 class="text-danger">Please fill field</h3>`
+
+        } else
+            output.innerHTML = `<h1>${(Number(myValue2.value.trim()) / Number(myValue1.value.trim() ** 2)).toFixed(3)} m<sup>2 </sup> </h1>`
+        return function answer() {
+            let secondReply = Number(myValue2.value.trim()) / Number(myValue1.value.trim() ** 2)
+            console.log(secondReply);
+
+
+            if (Number(secondReply) < 18.5) {
+                outputTwo.innerHTML = `<h3 class="text-danger">You are underweight</h3>`
+            }else if (Number(secondReply) >=  18.5 && Number(secondReply) <= 24.9) {
+                 outputTwo.innerHTML = `<h3 class="text-success">You have a normal weight</h3>`
+
+            }else if (Number(secondReply) >= 25 && Number(secondReply) <= 29.9){
+                outputTwo.innerHTML = `<h3 class="text-warning">You are overweight</h3>`
+
+            }else {
+                 outputTwo.innerHTML = `<h3 class="text-primary">You are obese</h3>`
+            }
+
+        }
+    }
+</script>
